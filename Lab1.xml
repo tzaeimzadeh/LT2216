@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version = "2.1" xmlns="http://www.w3.org/2001/vxml"
+      xmlns:voxeo="http://community.voxeo.com/xmlns/vxml">
+    <nomatch>
+        I didn't understand.
+        <reprompt/>
+    </nomatch>
+
+    <noinput>
+        You didn't say anything.
+        <reprompt/>
+    </noinput>
+
+    <!-- Data Model -->
+    <var name="from"/>
+    <var name="to"/>
+    <var name="date"/>
+    <var name="return"/>
+
+    <!-- State Machine -->
+    <form id="welcome">
+        <block>
+            <prompt>
+                <break time="2000"/>
+                Welcome to the flight booking service.
+            </prompt>
+            <goto next="#askFrom"/>
+        </block>
+    </form>
+
+    <form id="askFrom">
+        <field name="fromField">
+            <prompt>
+                What city are you leaving from?
+            </prompt>
+            <option>London</option>
+            <option>Paris</option>
+            <option>New York</option>
+        </field>
+        <filled>
+            <assign name="from" expr="fromField"/>
+            <goto next="#askTo"/>
+        </filled>
+    </form>
+
+    <form id="askTo">
+        <field name="toField">
+            <prompt>
+                Where are you going?
+            </prompt>
+            <option>London</option>
+            <option>Paris</option>
+            <option>New York</option>
+        </field>
+        <filled>
+            <assign name="to" expr="toField"/>
+            <goto next="#askDate"/>
+        </filled>
+    </form>
+
+    <form id="askDate">
+        <field name="dateField">
+            <prompt>
+                What date do you want to leave?
+            </prompt>
+            <option> <goto next="#dates"/> </option>
+        </field>
+        <filled>
+            <assign name="date" expr="dateField"/>
+            <goto next="#askOneway"/>
+        </filled>
+    </form>
+
+    <form id="askOneway"/>
+        <field name="onewayField">
+            <prompt>
+                Is it a one-way trip?
+            </prompt>
+            <option>Yes</option>
+            <option>No</option>
+        </field>
+        <filled>
+            <if cond="onewayField == 'Yes'">
+                <goto next="#onewayYes"/>
+        <exit/>
+            <elseif cond="onewayField == 'No'"/>
+                <goto next="#onewayNo"/>
+            </if>
+        </filled>
+
+    <!-- what is the difference between form id and field name??-->
+    <form id="onewayYes">
+        <field name="onewayYes">
+            <prompt>
+            Do you want to go from <value expr="from"/> to <value expr="to"/> on <value expr="date"/>
+            </prompt>
+            <option>Yes</option>
+            <option>No</option>
+        </field>
+        <filled>
+            <if cond="onewayYes == Yes">
+                <goto next="#bookedField"/>
+        <exit/>
+            <elseif cond="onewayYes == No"/>
+                <goto next="#fromField"/>
+            </if>
+        </filled>
+    </form>
+
+    <form id="onewayNo">
+        <field name="onewayNo">
+            <prompt>
+                What date do you want to return?
+            </prompt>
+            <option> <goto next="#dates"/> </option>
+        </field>
+        <filled>
+            <assign name="return" expr="onewayNo"/>
+            <goto next="#returnField"/>
+        </filled>
+    </form>
+
+    <form id="returnField">
+        <field name="returnField">
+            <prompt>
+                Do you want to go from <value expr="from"/> to <value expr="to"/> on <value expr="date"/> returning on <value expr="from"/>
+            </prompt>
+            <option>Yes</option>
+            <option>No</option>
+        </field>
+        <filled>
+            <if cond="returnField == Yes">
+                <goto next="#bookedField"/>
+        <exit/>
+            <elseif cond="returnField == No"/>
+                <goto next="#fromField"/>
+            </if>
+        </filled>
+    </form>
+
+
+    <form id="dates">
+        <field name="datesField">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+        </field>
+    </form>
+
+
+    <form id="bookedFlight">
+        <field name="bookedField">
+            <prompt>
+                Your flight has been booked!
+            </prompt>
+        </field>
+    </form>
+
+</vxml>
