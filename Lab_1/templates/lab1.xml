@@ -17,19 +17,14 @@
   <menu id="mainMenu">
     <prompt bargein="false">
       <break time="2s"/>
-      Would you like to book a flight or get information about delayed flights?
+      Thank you for using this service, we have two options for you. Would you like to book a flight or get information about delayed flights?
     </prompt>
-    <choice next="book_flight">
+    <choice next="book_flight" accept="approximate">
       book a flight
     </choice>
-    <choice next="delayed_flights">
+    <choice next="delayed_flights" accept="approximate">
       delayed flights 
     </choice>
   </menu>
-
-  <link next="#mainMenu">
-    <option> main menu </option>
-    <option> start over </option>
-  </link>
 
 </vxml>

@@ -21,26 +21,13 @@
   <var name="date" />
   <var name="retrn" />
   
-  <!-- State machine
-  <menu>
-    <prompt bargein="false">
-      <break time="2s"/>
-      Would you like to book a flight or get information about delayed flights?
-    </prompt>
-    <choice next="#welcome">
-      book a flight
-    </choice>
-    <choice next="#delayed">
-      delayed flights
-    </choice>
-  </menu> -->
-
+  <!-- State machine -->
 
   <form id="welcome">
     <block>
       <prompt bargein="false">
         <break time="1000" />
-        Welcome to the flight booking service.
+        Welcome to the flight booking service. you can go back to the main menu at any point, by saying start over or menu. let's get started.
       </prompt>
       <goto next="#askFrom" />
     </block>
@@ -188,15 +175,20 @@
    <form id="booked">
      <block>
        <prompt>
-	 your flight has been booked!
+	 your flight has been booked. goodbye. 
        </prompt>
      </block>
    </form>
-   <!--
-   <form id="delayed">
-     <block>
-	 All flights are delayed. Sorry.
-     </block>
-   </form> -->
+
+   <link next="lab1"> 
+     <grammar mode="voice" version="1.0" root="root">
+       <rule id="root" scope="public">
+        <one-of>
+          <item> start over </item>
+          <item> menu </item>
+        </one-of>
+      </rule>
+    </grammar>
+   </link>
 
 </vxml>

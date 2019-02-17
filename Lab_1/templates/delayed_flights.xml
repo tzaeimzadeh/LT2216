@@ -5,7 +5,9 @@
 
   <form id="delayedFlights">
     <block>
+      <break time="2s"/>
       All flights are delayed. Sorry.
+     <goto next="lab1"/>
     </block>
   </form>
 
