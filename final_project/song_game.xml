@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml"
+      xmlns:voxeo="http://community.voxeo.com/xmlns/vxml">
+
+  <nomatch>
+    <property name="timeout" value="3s"/>
+    Sorry I didn't understand
+    <reprompt/>
+  </nomatch>
+
+  <noinput>
+    <property name="timeout" value="3s"/>
+    You didn't say anything.
+    <reprompt/>
+  </noinput>
+
+  <form id="start">
+    <block>
+      <prompt> <break/> welcome to the game. I will sing you a song, see if you can guess the title  </prompt>
+      <goto next="#songs"/>
+    </block>
+  </form>
+
+  <form id="songs">
+    <field name="guess">
+      <prompt> 
+	{{song}}
+      </prompt>
+    </field>
+  </form>
+
+</vxml>
