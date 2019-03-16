@@ -16,7 +16,7 @@ def menu():
 
 @app.route('/guess_song')
 def guess_song():
-    vxml = render_template('guess_song.xml', form=random.choice(song))
+    vxml = render_template('guess_song.xml')
     response = make_response(vxml)
     response.headers["Content-Type"] = "application/xml"
     return response
