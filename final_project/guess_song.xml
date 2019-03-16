@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1">
+
+  <nomatch>
+    <property name="timeout" value="3s"/>
+    Sorry I didn't understand
+    <reprompt/>
+  </nomatch>
+
+  <noinput>
+    <property name="timeout" value="3s"/>
+    You didn't say anything.
+    <reprompt/>
+  </noinput>
+
+  <form id="guessLevel">
+    <block>
+      <prompt>
+          <break/>
+          In this level, a verse from a song will play,
+          and you can try to guess the title or the movie it's from.
+          If you don't know the answer, you can say I don't know, and we'll move on
+      </prompt>
+      <goto next="#song1"/>
+    </block>
+  </form>
+
+  <form id="song1">
+    <block>
+      <audio src="audio/UnderTheSea.pcm"/>
+    </block>
+    <prompt>
+      Guess the song title or the movie it's from
+    </prompt>
+    <grammar xml:lang="en-us">
+      <rule id="song1">
+        <one-of>
+            <item>under the sea</item>
+            <item>the little mermaid</item>
+            <item>i don't know</item>
+        </one-of>
+      </rule>
+    </grammar>
+    <if cond="song1=='i don't know'">
+      <prompt>ok let's try another song</prompt>
+      <goto next="#song2"/>
+    </if>
+  </form>
+
+  <form id="song2">
+    <block>
+      <audio src="audio/IWontSayImInLove.pcm"/>
+    </block>
+    <prompt>
+      Guess the song title or the movie it's from
+    </prompt>
+    <grammar xml:lang="en-us">
+      <rule id="song2">
+        <one-of>
+            <item>I won't say I'm in love</item>
+            <item>Hercules</item>
+            <item>i don't know</item>
+        </one-of>
+      </rule>
+    </grammar>
+    <if cond="song2=='i don't know'">
+      <prompt>ok let's try another song</prompt>
+      <goto next="#song3"/>
+    </if>
+  </form>
+
+  <form id="song3">
+    <block>
+      <audio src="audio/HakunaMatata2.pcm"/>
+    </block>
+    <prompt>
+      Guess the song title or the movie it's from
+    </prompt>
+    <grammar xml:lang="en-us">
+      <rule id="song3">
+        <one-of>
+            <item>Hakuna Matata</item>
+            <item>Lion King</item>
+            <item>i don't know</item>
+        </one-of>
+      </rule>
+    </grammar>
+    <if cond="song3=='i don't know'">
+      <prompt>ok let's try another song</prompt>
+      <goto next="#song4"/>
+    </if>
+  </form>
+
+  <form id="song4">
+    <block>
+      <audio src="audio/JustAroundTheRiverbend.pcm"/>
+    </block>
+    <prompt>
+      Guess the song title or the movie it's from
+    </prompt>
+    <grammar xml:lang="en-us">
+      <rule id="song4">
+        <one-of>
+            <item>just around the riverbend</item>
+            <item>Pocahontas</item>
+            <item>i don't know</item>
+        </one-of>
+      </rule>
+    </grammar>
+    <if cond="song4=='i don't know'">
+      <prompt>ok let's try another song</prompt>
+      <goto next="#song5"/>
+    </if>
+  </form>
+
+  <form id="song5">
+    <block>
+      <audio src="audio/ColoursOfTheWind.pcm"/>
+    </block>
+    <prompt>
+      Guess the song title or the movie it's from
+    </prompt>
+    <grammar xml:lang="en-us">
+      <rule id="song5">
+        <one-of>
+            <item>colours of the wind</item>
+            <item>Pocahontas</item>
+            <item>i don't know</item>
+        </one-of>
+      </rule>
+    </grammar>
+    <if cond="song5=='i don't know'">
+      <prompt>ok let's try another song</prompt>
+      <goto next="#song6"/>
+    </if>
+  </form>
+
+  <form id="song6">
+    <block>
+      <audio src="audio/BePrepared.pcm"/>
+    </block>
+    <prompt>
+      Guess the song title or the movie it's from
+    </prompt>
+    <grammar xml:lang="en-us">
+      <rule id="song6">
+        <one-of>
+            <item>be prepared</item>
+            <item>Lion King</item>
+            <item>i don't know</item>
+        </one-of>
+      </rule>
+    </grammar>
+    <if cond="song6=='i don't know'">
+      <prompt>ok maybe this game isn't for you</prompt>
+      <goto next="menu"/>
+    </if>
+  </form>
+
+</vxml>

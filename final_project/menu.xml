@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml"
+      xmlns:voxeo="http://community.voxeo.com/xmlns/vxml">
+
+  <nomatch>
+    <property name="timeout" value="3s"/>
+    Sorry I didn't understand
+    <reprompt/>
+  </nomatch>
+
+  <noinput>
+    <property name="timeout" value="3s"/>
+    You didn't say anything.
+    <reprompt/>
+  </noinput>
+
+  <menu id="mainMenu">
+    <prompt bargein="false">
+      <break time="2s"/>
+      Welcome to the game, there are two levels. Would you like to guess the song title or sing the next verse?
+    </prompt>
+    <choice next="guess_song" accept="approximate">
+      guess song title
+    </choice>
+    <choice next="sing_verse" accept="approximate">
+      sing next verse
+    </choice>
+  </menu>
+</vxml>
