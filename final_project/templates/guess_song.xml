@@ -26,9 +26,8 @@
   </form>
 
   <form id="song1">
-    <block>
-      <audio src="audio/UnderTheSea.pcm"/>
-    </block>
+    <field>
+    <audio src="audio/UnderTheSea.pcm"/>
     <prompt>
       Guess the song title or the movie it's from
     </prompt>
@@ -45,6 +44,7 @@
       <prompt>ok let's try another song</prompt>
       <goto next="#song2"/>
     </if>
+    </field>
   </form>
 
   <form id="song2">

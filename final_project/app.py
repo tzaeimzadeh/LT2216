@@ -24,7 +24,12 @@ def guess_song():
 
 @app.route('/sing_verse')
 def sing_verse():
-    vxml = render_template('sing_verse.xml', form=random.choice(song))
+    vxml = render_template('sing_verse.xml')
     response = make_response(vxml)
     response.headers["Content-Type"] = "application/xml"
     return response
+
+
+@app.route('/audio/<path:path>')
+def send_audio(path):
+    return send_from_directory('audio', path)
