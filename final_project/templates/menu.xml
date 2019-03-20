@@ -19,11 +19,35 @@
       <break time="2s"/>
       Welcome to the game, there are two levels. Would you like to guess the song title or sing the next verse?
     </prompt>
-    <choice next="guess_song" accept="approximate">
+        <choice next="#guessLevel" accept="approximate">
       guess song title
     </choice>
-    <choice next="sing_verse" accept="approximate">
+    <choice next="#singLevel" accept="approximate">
       sing next verse
     </choice>
   </menu>
+
+  <form id="guessLevel">
+    <block>
+      <prompt>
+          <break/>
+          In this level, a verse from a song will play,
+          and you can try to guess the title or the movie it's from.
+          If you don't know the answer, you can say I don't know, and we'll move on
+      </prompt>
+      <submit next="guess_song"/>
+    </block>
+  </form>
+
+  <form id="singLevel">
+    <block>
+      <prompt>
+          <break/>
+          In this level, a verse from a song will play,
+          and you can try to sing the next verse
+          If you don't know the answer, you can say I don't know, and we'll move on
+      </prompt>
+      <submit next="sing_verse"/>
+    </block>
+  </form>
 </vxml>
