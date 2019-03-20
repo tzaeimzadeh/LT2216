@@ -3,7 +3,11 @@ import random
 
 app = Flask(__name__)
 
-song = ["song1", "song2", "song3", "song4", "song5", "song6"]
+#song = ["song1", "song2", "song3", "song4", "song5", "song6"]
+
+song = [("UnderTheSea", "little mermaid"), ("IWontSayImInLove", "hercules"), ("HakunaMatata2", "lion king"),
+        ("JustAroundTheRiverbend", "pocahontas"), ("ColoursOfTheWind", "pocahontas"), ("BePrePared", "lion king")]
+answers = ["little mermaid", "hercules", "lion king", "pocahontas", "pocahontas", "lion king"]
 
 
 @app.route('/menu')
@@ -16,7 +20,8 @@ def menu():
 
 @app.route('/guess_song')
 def guess_song():
-    vxml = render_template('guess_song.xml')
+    #vxml = render_template('guess_song.xml#'+random.choice(song))
+    vxml = render_template('guess_song.xml', song=random.choice(song), answers=answers)
     response = make_response(vxml)
     response.headers["Content-Type"] = "application/xml"
     return response
@@ -24,7 +29,8 @@ def guess_song():
 
 @app.route('/sing_verse')
 def sing_verse():
-    vxml = render_template('sing_verse.xml')
+    #vxml = render_template('sing_verse.xml#'+random.choice(song))
+    vxml = render_template('sing_verse.xml', song=random.choice(song), answers=answers)
     response = make_response(vxml)
     response.headers["Content-Type"] = "application/xml"
     return response
