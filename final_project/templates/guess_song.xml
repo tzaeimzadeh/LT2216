@@ -24,13 +24,13 @@
     <prompt>
       What movie is the song from?
     </prompt>  
-    
+    <option>i don't know</option>
     {% for x in answers %}
     <item> {{x}}
       <tag>
       {% if x == song[1] %}
       out="correct”
-      {% else % }
+      {% else %}
       out = "incorrect”
       {% endif %}
       </tag>
