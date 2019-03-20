@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 #song = ["song1", "song2", "song3", "song4", "song5", "song6"]
 song = [("audio/UnderTheSea.pcm", "little mermaid"), ("audio/IWontSayImInLove.pcm", "hercules"), ("audio/HakunaMatata2.pcm", "lion king"),
-        ("audio/JustAroundTheRiverbend.pcm", "pocahontas"), ("audio/ColoursOfTheWind.pcm", "pocahontas"), ("audio/BePrePared.pcm", "lion king")]
+        ("audio/JustAroundTheRiverbend.pcm", "pocahontas"), ("audio/ColoursOfTheWind.pcm", "pocahontas"), ("audio/BePrepared.pcm", "lion king")]
 answers = ["little mermaid", "hercules", "lion king", "pocahontas", "pocahontas", "lion king"]
 
 
