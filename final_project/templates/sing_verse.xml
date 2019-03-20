@@ -13,142 +13,48 @@
     <reprompt/>
   </noinput>
 
-  <form id="singLevel">
-    <block>
-      <prompt>
-          <break/>
-          In this level, a verse from a song will play,
-          and you can try to sing the next verse
-          If you don't know the answer, you can say I don't know, and we'll move on
-      </prompt>
-      <goto next="#song1"/>
-    </block>
-  </form>
-
-  <form id="song1">
-    <block>
-      <audio src="audio/WholeNewWorld.pcm"/>
-    </block>
+  <form id="singVerse">
+    <field name="singVerse">
     <prompt>
-      Sing the next verse
+      <break/>
+      Listen carefully
+      <break/>
+    </prompt>
+    <audio src="{{verse[0]}}"/>
+    <prompt>
+      <break/>
+      What movie is the song from?
     </prompt>
     <grammar xml:lang="en-us">
-      <rule id="song1">
+      <rule id="verseGrammar">
         <one-of>
-            <item>no one to tell us no, or where to go, or say we're only dreaming</item>
-            <item>i don't know</item>
+          {% for x in lyrics %}
+          <item> {{x}}
+            <tag>
+            {% if x == verse[1] %}
+            out="correct”
+            {% else %}
+            out = "incorrect”
+            {% endif %}
+            </tag>
+          </item>
+          {% endfor %}
+          <item> i don't know </item>
         </one-of>
       </rule>
     </grammar>
-    <if cond="song1=='i don't know'">
+    </field>
+    <filled>
+    <if cond="singVerse=='i don't know'">
       <prompt>ok let's try another song</prompt>
-      <goto next="#song2"/>
+      <submit next="sing_verse"/>
+      <elseif cond="singVerse==correct"/>
+      <prompt>nice job, see how you do on this next song</prompt>
+      <submit next="sing_verse"/>
+      <!-- <else/>
+      if more than x number of times, move on? -->
     </if>
-  </form>
-
-  <form id="song2">
-    <block>
-      <audio src="audio/Supercali.pcm"/>
-    </block>
-    <prompt>
-      Sing the next verse
-    </prompt>
-    <grammar xml:lang="en-us">
-      <rule id="song2">
-        <one-of>
-            <item>even though the sound of it is something quite atrocious</item>
-            <item>i don't know</item>
-        </one-of>
-      </rule>
-    </grammar>
-    <if cond="song2=='i don't know'">
-      <prompt>ok let's try another song</prompt>
-      <goto next="#song3"/>
-    </if>
-  </form>
-
-  <form id="song3">
-    <block>
-      <audio src="audio/BareNecessities.pcm"/>
-    </block>
-    <prompt>
-      Sing the next verse
-    </prompt>
-    <grammar xml:lang="en-us">
-      <rule id="song3">
-        <one-of>
-            <item>forget about your worries and your strife</item>
-            <item>i don't know</item>
-        </one-of>
-      </rule>
-    </grammar>
-    <if cond="song3=='i don't know'">
-      <prompt>ok let's try another song</prompt>
-      <goto next="#song4"/>
-    </if>
-  </form>
-
-  <form id="song4">
-    <block>
-      <audio src="audio/MakeAManOutOfYou.pcm"/>
-    </block>
-    <prompt>
-      Sing the next verse
-    </prompt>
-    <grammar xml:lang="en-us">
-      <rule id="song4">
-        <one-of>
-            <item>with all the strength of a raging fire</item>
-            <item>i don't know</item>
-        </one-of>
-      </rule>
-    </grammar>
-    <if cond="song4=='i don't know'">
-      <prompt>ok let's try another song</prompt>
-      <goto next="#song5"/>
-    </if>
-  </form>
-
-  <form id="song5">
-    <block>
-      <audio src="audio/BeOurGuest.pcm"/>
-    </block>
-    <prompt>
-      Sing the next verse
-    </prompt>
-    <grammar xml:lang="en-us">
-      <rule id="song5">
-        <one-of>
-            <item>put our service to the test</item>
-            <item>i don't know</item>
-        </one-of>
-      </rule>
-    </grammar>
-    <if cond="song5=='i don't know'">
-      <prompt>ok let's try another song</prompt>
-      <goto next="#song6"/>
-    </if>
-  </form>
-
-  <form id="song6">
-    <block>
-      <audio src="audio/HakunaMatata.pcm"/>
-    </block>
-    <prompt>
-      Sing the next verse
-    </prompt>
-    <grammar xml:lang="en-us">
-      <rule id="song6">
-        <one-of>
-            <item>hakuna matata ain't no passing craze</item>
-            <item>i don't know</item>
-        </one-of>
-      </rule>
-    </grammar>
-    <if cond="song6=='i don't know'">
-      <prompt>ok maybe this game isn't for you</prompt>
-      <goto next="menu"/>
-    </if>
+    </filled>
   </form>
 
 </vxml>
