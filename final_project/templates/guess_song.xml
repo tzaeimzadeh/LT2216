@@ -27,21 +27,23 @@
     </prompt>
     <grammar xml:lang="en-us">
       <rule id="songGrammar">
-    {% for x in answers %}
-    <item> {{x}}
-      <tag>
-      {% if x == song[1] %}
-      out="correct”
-      {% else %}
-      out = "incorrect”
-      {% endif %}
-      </tag>
-    </item>
-    {% endfor %}
+        <one-of>
+          {% for x in answers %}
+          <item> {{x}}
+            <tag>
+            {% if x == song[1] %}
+            out="correct”
+            {% else %}
+            out = "incorrect”
+            {% endif %}
+            </tag>
+          </item>
+          {% endfor %}
+          <item> i don't know </item>
+        </one-of>
       </rule>
     </grammar>
     </field>
-    <option> i don't know </option>
     <filled>
     <if cond="guessSong=='i don't know'">
       <prompt>ok let's try another song</prompt>
