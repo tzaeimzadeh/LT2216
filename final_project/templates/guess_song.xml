@@ -16,15 +16,17 @@
   <form id="guessSong">
     <field name="guessSong">
     <prompt>
+      <break/>
       Listen carefully
+      <break/>
     </prompt>
-    <break/>
     <audio src="{{song[0]}}"/>
-    <break/>
     <prompt>
+      <break/>
       What movie is the song from?
-    </prompt>  
-    <option>i don't know</option>
+    </prompt>
+    <grammar xml:lang="en-us">
+      <rule id="songGrammar">
     {% for x in answers %}
     <item> {{x}}
       <tag>
@@ -36,7 +38,10 @@
       </tag>
     </item>
     {% endfor %}
+      </rule>
+    </grammar>
     </field>
+    <option> i don't know </option>
     <filled>
     <if cond="guessSong=='i don't know'">
       <prompt>ok let's try another song</prompt>
