@@ -4,9 +4,8 @@ import random
 app = Flask(__name__)
 
 #song = ["song1", "song2", "song3", "song4", "song5", "song6"]
-
-song = [("UnderTheSea", "little mermaid"), ("IWontSayImInLove", "hercules"), ("HakunaMatata2", "lion king"),
-        ("JustAroundTheRiverbend", "pocahontas"), ("ColoursOfTheWind", "pocahontas"), ("BePrePared", "lion king")]
+song = [("audio/UnderTheSea.pcm", "little mermaid"), ("audio/IWontSayImInLove.pcm", "hercules"), ("audio/HakunaMatata2.pcm", "lion king"),
+        ("audio/JustAroundTheRiverbend.pcm", "pocahontas"), ("audio/ColoursOfTheWind.pcm", "pocahontas"), ("audio/BePrePared.pcm", "lion king")]
 answers = ["little mermaid", "hercules", "lion king", "pocahontas", "pocahontas", "lion king"]
 
 
