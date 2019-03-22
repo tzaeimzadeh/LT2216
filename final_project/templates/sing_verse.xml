@@ -56,5 +56,17 @@
     </if>
     </filled>
   </form>
+  
+  <link next="menu"> 
+    <grammar mode="voice" version="1.0" root="root">
+      <rule id="root" scope="public">
+        <one-of>
+	        <item> start over </item>
+          <item> menu </item>
+	        <item> quit </item>
+        </one-of>
+      </rule>
+    </grammar>
+  </link>
 
 </vxml>
