@@ -28,6 +28,7 @@
    
     <grammar xml:lang="en-us">
       <rule id="songGrammar">
+        <one-of>
           {% for x in title %}
           <item> {{x}}
             <tag>
@@ -39,6 +40,8 @@
             </tag>
           </item>
           {% endfor %}
+          <item> i don't know </item>
+        </one-of>
       </rule>
     </grammar>
     </field>
