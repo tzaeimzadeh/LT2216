@@ -32,14 +32,14 @@
           <item> {{x}}
             <tag>
             {% if x == verse[1] %}
-            out="correct”
+            out="correct"
             {% else %}
-            out = "incorrect”
+            out = "incorrect"
             {% endif %}
             </tag>
           </item>
           {% endfor %}
-          <item> i don't know </item>
+          <item> i don't know <tag>out="i don't know"; </tag> </item>
         </one-of>
       </rule>
     </grammar>
