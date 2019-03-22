@@ -26,7 +26,7 @@
       What movie is the song from?
     </prompt>
    
-    <grammar xml:lang="en-us">
+    <grammar xml:lang="en-us" root="songGrammar">
       <rule id="songGrammar">
         <one-of>
           {% for x in title %}
