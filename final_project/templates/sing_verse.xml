@@ -23,7 +23,7 @@
     <audio src="{{verse[0]}}"/>
     <prompt>
       <break/>
-      What movie is the song from?
+      What is the next verse?
     </prompt>
     <grammar xml:lang="en-us" tag-format="semantics/1.0" root="verseGrammar">
       <rule id="verseGrammar">
