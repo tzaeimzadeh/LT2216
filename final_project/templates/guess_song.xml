@@ -49,13 +49,13 @@
       <prompt> you said <value expr="guessSong$.utterance"/> 
       with the interpretation <value expr="guessSong$.interpretation"/>  </prompt>
     <if cond="guessSong=='i do not know'">
-      <prompt>ok let's try another song</prompt>
+      <prompt> <break/> ok let's try another song</prompt>
       <submit next="guess_song"/>
       <elseif cond="guessSong=='correct'"/>
-      <prompt>nice job, see how you do on this next song</prompt>
+      <prompt> <break/> nice job, see how you do on this next song</prompt>
       <submit next="guess_song"/>
      <else/>
-       <prompt> that was not the correct answer, try again </prompt>
+       <prompt> <break/> that was not the correct answer, try again </prompt>
        <goto next="#guessSong"/>
     </if>
     </filled>
