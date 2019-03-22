@@ -31,9 +31,9 @@
     <block>
       <prompt>
           <break/>
-          In this level, a verse from a song will play,
-          and you can try to guess the title or the movie it's from.
-          If you don't know the answer, you can say I don't know, and we'll move on
+          In this level, a verse from a song will play, and you can try to guess the movie it's from.
+          <break/> 
+          If you don't know the answer, you can say I don't know, and we'll move on.
       </prompt>
       <submit next="guess_song"/>
     </block>
@@ -43,8 +43,8 @@
     <block>
       <prompt>
           <break/>
-          In this level, a verse from a song will play,
-          and you can try to sing the next verse
+          In this level, a verse from a song will play, and you can try to sing the next verse
+          <break/>
           If you don't know the answer, you can say I don't know, and we'll move on
       </prompt>
       <submit next="sing_verse"/>
