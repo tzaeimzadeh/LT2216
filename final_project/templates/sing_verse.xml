@@ -7,12 +7,19 @@
     <reprompt/>
   </nomatch>
 
+  <nomatch count="3">
+    Maybe we should move on to a different song
+    <submit next="guess_song"/>
+  </nomatch>
+	
   <noinput>
     <property name="timeout" value="3s"/>
     You didn't say anything.
     <reprompt/>
   </noinput>
 
+  <var name="counter" expr="0"/>
+	
   <form id="singVerse">
     <field name="singVerse">
     <prompt>
@@ -53,7 +60,12 @@
       <elseif cond="singVerse=='correct'"/>
       <prompt> <break/> nice job, see how you do on this next song</prompt>
       <submit next="sing_verse"/>
-     <else/>
+    <else/>
+      <assign name="counter" expr="counter+1"/>
+      <if cond="counter == '3'">
+	 <prompt> <break/> that was not the correct answer, maybe we should try a different song </prompt>
+	 <submit next="guess_song"/>
+       </if>
        <prompt> <break/> that was not the correct answer, try again </prompt>
        <goto next="#singVerse"/>
     </if>
