@@ -52,8 +52,7 @@
     </grammar>
     </field>
     <filled>
-      <prompt> you said <value expr="singVerse$.utterance"/> 
-      with the interpretation <value expr="singVerse$.interpretation"/>  </prompt>
+      <prompt> you said <value expr="singVerse$.utterance"/> </prompt>
     <if cond="singVerse=='i do not know'">
       <prompt> <break/> ok let's try another song</prompt>
       <submit next="sing_verse"/>
@@ -76,9 +75,9 @@
     <grammar mode="voice" version="1.0" root="root">
       <rule id="root" scope="public">
         <one-of>
-	        <item> start over </item>
+	  <item> start over </item>
           <item> menu </item>
-	        <item> quit </item>
+	  <item> quit </item>
         </one-of>
       </rule>
     </grammar>
